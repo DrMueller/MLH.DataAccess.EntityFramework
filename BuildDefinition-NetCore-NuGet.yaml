@@ -66,7 +66,7 @@ phases:
   condition: succeeded()
   server: true
   variables:
-    ParentWorkItemId: '263'
+    ParentWorkItemId: '274'
   steps:
   - task: AzureFunction@1
     displayName: 'Create Release Work Item'
