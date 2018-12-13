@@ -11,7 +11,7 @@ using Mmu.Mlh.DataAccess.EntityFramework.Areas.DataModelRepositories.Servants.Im
 namespace Mmu.Mlh.DataAccess.EntityFramework.Areas.DataModelRepositories.Implementation
 {
     public class EntityFrameworkDataModelRepository<T, TId> : IEntityFrameworkDataModelRepository<T, TId>
-        where T : DataModelBase<TId>
+        where T : AggregateRootDataModel<TId>
     {
         private readonly DbContext _dbContext;
 

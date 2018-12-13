@@ -4,7 +4,7 @@ using Mmu.Mlh.DataAccess.Areas.DataModeling.Models;
 
 namespace Mmu.Mlh.DataAccess.EntityFramework.TestApplication.Areas.DataAccess.DataModeling
 {
-    public class IndividualDataModel : DataModelBase<long>
+    public class IndividualDataModel : AggregateRootDataModel<long>
     {
         public List<AddressDataModel> Addresses { get; set; }
         public DateTime Birthdate { get; set; }
