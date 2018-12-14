@@ -32,23 +32,26 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.TestApplication.Areas.DataAccess.Da
         {
             var dataModel = base.Adapt(aggregateRoot);
 
-            if (dataModel.Addresses == null)
+            if (!aggregateRoot.Addresses.Any())
             {
                 return dataModel;
             }
 
-            foreach (var dmAddress in dataModel.Addresses)
-            {
-                dmAddress.IndividualId = aggregateRoot.Id;
-                var adr = aggregateRoot.Addresses.First(f => f.Id == dmAddress.Id);
-                dmAddress.Streets = adr.Streets.Select(
-                    f => new StreetDataModel
-                    {
-                        AddressId = adr.Id,
-                        StreetName = f.StreetName,
-                        StreetNumber = f.StreetNumber
-                    }).ToList();
-            }
+            dataModel.Addresses = aggregateRoot.Addresses.Select(
+                adr => new AddressDataModel
+                {
+                    City = adr.City,
+                    Id = adr.Id,
+                    IndividualId = aggregateRoot.Id,
+                    Streets = adr.Streets.Select(
+                        str => new StreetDataModel
+                        {
+                            StreetName = str.StreetName,
+                            StreetNumber = str.StreetNumber,
+                            AddressId = adr.Id
+                        }).ToList(),
+                    Zip = adr.Zip
+                }).ToList();
 
             return dataModel;
         }

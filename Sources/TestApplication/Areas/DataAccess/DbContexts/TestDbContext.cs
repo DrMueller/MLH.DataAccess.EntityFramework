@@ -13,8 +13,18 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.TestApplication.Areas.DataAccess.Db
             AppInitializationService.AssureAppIsInitialized();
         }
 
+        public TestDbContext(DbContextOptions options)
+            : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (optionsBuilder.IsConfigured)
+            {
+                return;
+            }
+
             var settingsProvider = ServiceLocatorSingleton.Instance.GetService<IEntityFrameworkDbSettingsProvider>();
             var connectionStrinng = settingsProvider.ProvideEntityFrameworkDbSettings().ConnectionString;
             optionsBuilder.UseSqlServer(connectionStrinng);

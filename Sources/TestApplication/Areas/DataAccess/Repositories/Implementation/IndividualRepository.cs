@@ -14,6 +14,5 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.TestApplication.Areas.DataAccess.Re
             : base(dataModelRepository, dataModelAdapter)
         {
         }
-
     }
 }

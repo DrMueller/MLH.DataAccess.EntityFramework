@@ -21,7 +21,7 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.Areas.DataModelRepositories.Servant
 
             foreach (var col in entityEntry.Collections)
             {
-                foreach (var entity in col.CurrentValue)
+                foreach (var entity in col?.CurrentValue ?? Enumerable.Empty<object>())
                 {
                     var currentEntityEntry = dbContext.Entry(entity);
                     currentEntityEntry.State = EntityState.Detached;

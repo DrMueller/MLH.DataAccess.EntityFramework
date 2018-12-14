@@ -12,7 +12,7 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.TestApplication.Areas.DataAccess.Da
                 .ForMember(d => d.FirstName, c => c.MapFrom(f => f.FirstName))
                 .ForMember(d => d.Id, c => c.MapFrom(f => f.Id))
                 .ForMember(d => d.LastName, c => c.MapFrom(f => f.LastName))
-                .ForMember(d => d.Addresses, c => c.MapFrom(f => f.Addresses));
+                .ForMember(d => d.Addresses, c => c.Ignore());
         }
     }
 }
