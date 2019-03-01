@@ -102,7 +102,7 @@ namespace Mmu.Mlh.DataAccess.EntityFramework.IntegrationTests.TestingAreas.Areas
             var actualIndividual = await _sut.LoadByIdAsync(individual.Id);
 
             // Assert
-            Assert.IsNull(actualIndividual);
+            Assert.IsNotNull(actualIndividual);
             Assert.AreEqual(individual.Birthdate, actualIndividual.Birthdate);
             Assert.AreEqual(individual.FirstName, actualIndividual.FirstName);
             Assert.AreEqual(individual.Id, actualIndividual.Id);
